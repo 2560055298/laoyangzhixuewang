@@ -3,12 +3,14 @@ import com.atguigu.eduservice.entity.EduTeacher;
 import com.atguigu.eduservice.entity.vo.TeacherQuery;
 import com.atguigu.eduservice.service.impl.EduTeacherServiceImpl;
 import com.atguigu.commonutils.R;
+import com.atguigu.servicebase.exceptionhandler.GuiguException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(description = "讲师管理")
 @RestController
 @RequestMapping("/eduservice/teacher")
+@Slf4j
 public class EduTeacherController {
     @Autowired
     private EduTeacherServiceImpl eduTeacherService;
@@ -58,7 +61,13 @@ public class EduTeacherController {
         Page<EduTeacher> pageTeacher = new Page<>(current, limit);
         eduTeacherService.page(pageTeacher, null);
 
-        int i = 10 / 0;
+        try {
+            int i = 10 / 0;
+        } catch (Exception e) {
+            log.error("10 / 0的错误");
+            e.printStackTrace();
+            throw new GuiguException(20002, "自定义异常");
+        }
 
         return R.ok().data("total", pageTeacher.getTotal())
                 .data("rows", pageTeacher.getRecords());

@@ -2,6 +2,7 @@ package com.atguigu.servicebase.exceptionhandler;
 
 
 import com.atguigu.commonutils.R;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,8 +18,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GlobalExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     @ResponseBody
-    public R exceptionHandler(Exception e){
+    public R Globalexception(Exception e){
         e.printStackTrace();
-        return R.error().message("当前服务繁忙, 请稍后再试~~~~");
+        return R.error().message("全局Exception执行了~~~");
+    }
+
+    @ExceptionHandler(value = {ArithmeticException.class})
+    @ResponseBody
+    public R ArithException(ArithmeticException e){
+        e.printStackTrace();
+        return R.error().message("特定异常：ArithException");
+    }
+
+    @ExceptionHandler(value = {GuiguException.class})
+    @ResponseBody
+    public R defineException(GuiguException e){
+        return R.error().code(e.getCode()).message(e.getMsg());
     }
 }
