@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="722443ea-9a45-453f-a837-07da29f98f66" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\myMaven\apache-maven-3.8.3\maven-repo" />
+        <option name="mavenHome" value="E:\myMaven\apache-maven-3.8.3" />
+        <option name="userSettingsFile" value="E:\myMaven\apache-maven-3.8.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="23GxKrkMZQViAEvCvGEl7T5N5Yu" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/common_utils" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.26260257" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\common" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EduTeacherApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="service_edu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.demo.getCode" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getCode.main1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="service_edu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.demo.getCode" />
+      <option name="METHOD_NAME" value="main1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EduTeacherApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service_edu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.EduTeacherApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuliParentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guli_parent" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.GuliParentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.EduTeacherApplication" />
+        <item itemvalue="JUnit.getCode.main1" />
+        <item itemvalue="JUnit.getCode" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration useDefault="false">C:\Users\Lenovo\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="722443ea-9a45-453f-a837-07da29f98f66" name="Default Changelist" comment="" />
+      <created>1641374163551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641374163551</updated>
+      <workItem from="1641374164761" duration="307000" />
+      <workItem from="1641374493434" duration="396000" />
+      <workItem from="1641374911727" duration="159000" />
+      <workItem from="1641375088581" duration="157000" />
+      <workItem from="1641375274450" duration="648000" />
+      <workItem from="1641375950135" duration="1259000" />
+      <workItem from="1641377263978" duration="276000" />
+      <workItem from="1641377575317" duration="364000" />
+      <workItem from="1641377960056" duration="940000" />
+      <workItem from="1641378927921" duration="1112000" />
+      <workItem from="1641380069719" duration="11923000" />
+      <workItem from="1641396458024" duration="3233000" />
+      <workItem from="1641429778750" duration="1944000" />
+      <workItem from="1641431762268" duration="5854000" />
+      <workItem from="1641439008063" duration="5274000" />
+      <workItem from="1641449912946" duration="328000" />
+      <workItem from="1641450269742" duration="570000" />
+      <workItem from="1641450870142" duration="328000" />
+      <workItem from="1641451225106" duration="12424000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
