@@ -66,15 +66,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.EduTeacherApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,7 +165,8 @@
       <workItem from="1641449912946" duration="328000" />
       <workItem from="1641450269742" duration="570000" />
       <workItem from="1641450870142" duration="328000" />
-      <workItem from="1641451225106" duration="16958000" />
+      <workItem from="1641451225106" duration="20206000" />
+      <workItem from="1641531207936" duration="3950000" />
     </task>
     <servers />
   </component>
