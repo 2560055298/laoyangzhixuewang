@@ -3,7 +3,6 @@ import com.atguigu.eduservice.entity.EduTeacher;
 import com.atguigu.eduservice.entity.vo.TeacherQuery;
 import com.atguigu.eduservice.service.impl.EduTeacherServiceImpl;
 import com.atguigu.commonutils.R;
-import com.atguigu.servicebase.exceptionhandler.GuiguException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -26,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(description = "讲师管理")
 @RestController
+@CrossOrigin
 @RequestMapping("/eduservice/teacher")
 @Slf4j
 public class EduTeacherController {
@@ -60,14 +60,6 @@ public class EduTeacherController {
 
         Page<EduTeacher> pageTeacher = new Page<>(current, limit);
         eduTeacherService.page(pageTeacher, null);
-
-        try {
-            int i = 10 / 0;
-        } catch (Exception e) {
-            log.error("10 / 0的错误");
-            e.printStackTrace();
-            throw new GuiguException(20002, "自定义异常");
-        }
 
         return R.ok().data("total", pageTeacher.getTotal())
                 .data("rows", pageTeacher.getRecords());
@@ -107,6 +99,9 @@ public class EduTeacherController {
             wrapper.le("gmt_modified", end);
         }
 
+        //设置：按修改时间排序
+        wrapper.orderByDesc("gmt_modified");
+
         IPage<EduTeacher> page = eduTeacherService.page(eduTeacherPage, wrapper);
 
         System.out.println(teacherQuery);
@@ -114,7 +109,6 @@ public class EduTeacherController {
         return R.ok().data("total", page.getTotal())
                 .data("rows", page.getRecords());
     }
-
 
     @ApiOperation(value = "添加讲师")
     @PostMapping("addTeacher")

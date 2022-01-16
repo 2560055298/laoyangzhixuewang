@@ -56,7 +56,7 @@ public class getCode {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("edu_teacher");
+        strategy.setInclude("edu_course", "edu_chapter", "edu_video", "edu_course_description");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的
 
 

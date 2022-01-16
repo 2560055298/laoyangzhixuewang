@@ -27,6 +27,38 @@
                 </el-form-item>
           
                 <!-- 讲师头像：TODO -->
+                   <!-- 讲师头像 -->
+                  <el-form-item label="讲师头像">
+                    <!-- 头衔缩略图 -->
+                    <pan-thumb :image="String(teacher.avatar)" />
+                    <!-- 文件上传按钮 -->
+                    <el-button
+                      type="primary"
+                      icon="el-icon-upload"
+                      @click="imagecropperShow = true"
+                      >更换头像
+                    </el-button>
+
+                    <!--
+                  v-show：是否显示上传组件
+                  :key：类似于id，如果一个页面多个图片上传控件，可以做区分
+                  :url：后台上传的url地址
+                  @close：关闭上传组件
+                  @crop-upload-success：上传成功后的回调 
+                  这里field的值必须和后端接口MultipartFile file的形参名相同
+                    <input type="file" name="file"/>
+                  -->
+                    <image-cropper
+                      v-show="imagecropperShow"
+                      :width="300"
+                      :height="300"
+                      :key="imagecropperKey"
+                      :url="BASE_API + '/eduoss/fileoss/uploadAvartar'"
+                      field="file"
+                      @close="close"
+                      @crop-upload-success="cropSuccess"
+                    />
+                  </el-form-item>
           
                 <el-form-item>
                   <el-button
@@ -44,8 +76,12 @@
     
 <script>
     import teacherApi from '@/api/edu/teacher'
+    import ImageCropper from "@/components/ImageCropper";
+    import PanThumb from "@/components/PanThumb";
 
     export default {
+        components: { ImageCropper, PanThumb },
+
         data(){
             return{
                 teacher:{
@@ -53,9 +89,14 @@
                     sort: 0,        //讲师排序
                     level: "",      //讲师头衔
                     career:"",      //讲师资历
-                    intro:"",        //讲师简介
+                    intro:"",       //讲师简介
+                    avatar: ""      //讲师头像
                 },
-                saveBtnDisabled: false  //默认不可以提交
+
+                imagecropperShow: false,  //上传组件是否显示
+                imagecropperKey: 0,       //图片的键值
+                saveBtnDisabled: false,  //保存按钮（默认禁用）
+                BASE_API: process.env.BASE_API //获取dev.env.js里面地址
             }
         },
         created(){
@@ -79,7 +120,6 @@
                 }
                 
             },
-
 
             //2、添加讲师
             saveTeacher(){
@@ -121,6 +161,23 @@
               }else{   //不回显：没有携带ID
                 this.teacher = {}
               }
+            },
+
+            //6、关闭上传的组件
+            close(){
+                //关闭上传弹框的办法
+                this.imagecropperShow = false;
+                // 上传失败后，重新打开上传组件时初始化组件，否则显示上一次的上传结果
+                this.imagecropperKey = this.imagecropperKey + 1;
+            },
+
+            //7、上传成功执行方法
+            cropSuccess(data){
+                 //这个方法封装好了返回值
+                this.imagecropperShow = false;
+                //上传之后接口返回图片地址
+                this.teacher.avatar = data.url;
+                this.imagecropperKey = this.imagecropperKey + 1;
             }
         }
     }

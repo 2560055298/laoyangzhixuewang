@@ -2,7 +2,6 @@ package com.atguigu.servicebase.exceptionhandler;
 
 
 import com.atguigu.commonutils.R;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

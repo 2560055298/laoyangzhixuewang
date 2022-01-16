@@ -16,7 +16,7 @@ public class R {
     private Boolean sccuess;        //成功状态
     private Integer code;           //状态码
     private String message;         //提示消息
-    private HashMap<String, Object> map = new HashMap<>();
+    private HashMap<String, Object> data = new HashMap<>();
 
     //1、构造方法私有
     private R(){
@@ -58,13 +58,12 @@ public class R {
     }
 
     public R data(String key, Object value){
-        map.put(key, value);
-        this.setMap(map);
+        this.data.put(key, value);
         return this;
     }
 
     public R data(HashMap<String, Object> map){
-        this.setMap(map);
+        this.setData(map);
         return this;
     }
 }
