@@ -33,18 +33,22 @@
     data() {
       return {
         saveBtnDisabled: false, // 保存按钮是否禁用
+        courseID: "",           //课程ID
       };
     },
   
     created() {
       console.log("publish created");
+      if(this.$route.params && this.$route.params.id){
+            this.courseID = this.$route.params.id
+      }
     },
   
     methods: {
       previous() {
         console.log("previous");
   
-        this.$router.push({ path: "/course/chapter/1" });
+        this.$router.push({ path: "/course/chapter/"+this.courseID});
       },
   
       publish() {

@@ -64,4 +64,21 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
 
         return result;
     }
+
+    //删除：章 (如果：该章, 下面没有（节）可以删除。 否则无法删除)
+    @Override
+    public boolean isDelChapter(String chapterId) {
+        QueryWrapper<EduVideo> wrapper = new QueryWrapper<>();
+        wrapper.eq("chapter_id", chapterId);
+
+        int count = eduVideoService.count(wrapper);
+
+        int result = 0;     //删除：影响的行数
+
+        if(count <= 0){     //章下：没有小结（可以删除）
+            result = baseMapper.deleteById(chapterId);
+        }
+
+        return result > 0;  //删除成功~~~~
+    }
 }
