@@ -1,16 +1,28 @@
 package com.atguigu.eduservice.service.impl;
 
+import com.atguigu.eduservice.entity.EduChapter;
 import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.EduCourseDescription;
+import com.atguigu.eduservice.entity.EduVideo;
+import com.atguigu.eduservice.entity.vo.ChapterVo;
 import com.atguigu.eduservice.entity.vo.CourseInfoVo;
+import com.atguigu.eduservice.entity.vo.CoursePublishVo;
+import com.atguigu.eduservice.entity.vo.CourseQuery;
 import com.atguigu.eduservice.mapper.EduCourseMapper;
+import com.atguigu.eduservice.service.EduChapterService;
 import com.atguigu.eduservice.service.EduCourseDescriptionService;
 import com.atguigu.eduservice.service.EduCourseService;
+import com.atguigu.eduservice.service.EduVideoService;
 import com.atguigu.servicebase.exceptionhandler.GuiguException;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -24,6 +36,12 @@ import org.springframework.stereotype.Service;
 public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse> implements EduCourseService {
     @Autowired
     private EduCourseDescriptionService eduCourseDescriptionService;
+
+    @Autowired
+    private EduVideoService eduVideoService;        //小节
+
+    @Autowired
+    private EduChapterService eduChapterService;    //章
 
     @Override
     public String saveCourseInfo(CourseInfoVo courseInfoVo) {
@@ -91,4 +109,60 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
         eduCourseDescriptionService.updateById(description);
     }
+
+    //通过课程Id：查询课程信息
+    @Override
+    public CoursePublishVo getCoursePublishVoById(String courseId) {
+        return baseMapper.selectCoursePublishVoById(courseId);
+    }
+
+    //通过课程Id：查询课程信息
+    @Override
+    public boolean delCourseById(String courseId) {
+
+        try {
+            //1、删除：所有的小节
+            QueryWrapper<EduVideo> videoWrapper = new QueryWrapper<>();
+            videoWrapper.eq("course_id", courseId);
+            eduVideoService.remove(videoWrapper);
+
+            //2、删除：所有的章
+            QueryWrapper<EduChapter> characterWrapper = new QueryWrapper<>();
+            characterWrapper.eq("course_id", courseId);
+            eduChapterService.remove(characterWrapper);
+
+            //3、删除：该课程描述
+            eduCourseDescriptionService.removeById(courseId);
+
+            //4、删除：课程
+            baseMapper.deleteById(courseId);
+
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    //分页查询：所有课程信息
+    @Override
+    public IPage<EduCourse> pageCourse(Integer page, Integer limit, CourseQuery courseQuery) {
+        System.out.println("当前页：" + page);
+        System.out.println("每页显示条目数：" + limit);
+        System.out.println("courseQuery" + courseQuery);
+
+        Page<EduCourse> pageInfo = new Page<>(page, limit);
+        QueryWrapper<EduCourse> queryWrapper = new QueryWrapper<>();
+
+
+        if(courseQuery != null && !courseQuery.getTitle().equals("")){
+            queryWrapper.like("title", courseQuery.getTitle());
+        }
+
+        if(courseQuery != null && !courseQuery.getStatus().equals("")){
+            queryWrapper.eq("status", courseQuery.getStatus());
+        }
+
+        return baseMapper.selectPage(pageInfo, queryWrapper);
+    }
+
 }

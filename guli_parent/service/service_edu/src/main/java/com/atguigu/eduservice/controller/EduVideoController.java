@@ -4,6 +4,7 @@ package com.atguigu.eduservice.controller;
 import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduVideo;
 import com.atguigu.eduservice.service.EduVideoService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/eduservice/video")
 @CrossOrigin
-
+@Api(description = "小节管理")
 public class EduVideoController {
     @Autowired
     private EduVideoService eduVideoService;
@@ -46,7 +47,6 @@ public class EduVideoController {
         boolean result = eduVideoService.updateById(eduVideo);
         return result ? R.ok() : R.error().message("修改小节信息：失败");
     }
-
 
     //4、删除：小节信息
     @GetMapping("delVideo/{videoId}")
