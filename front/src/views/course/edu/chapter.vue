@@ -32,7 +32,7 @@
                 </span>
             </p>
 
-            <!-- 视频 -->
+            <!-- 小节（视频） -->
             <ul class="chanpterList videoList">
                 <li
                     v-for="video in chapter.children"
@@ -40,8 +40,7 @@
                     <p>{{ video.title }}
 
                 <span class="acts">
-                    
-                    <el-button style="" type="text">编辑</el-button>
+                    <el-button style="" type="text" @click="openEditVideo(video.id)">编辑</el-button>
                     <el-button type="text" @click="removeVideo(video.id)">删除</el-button>
                 </span>
                     </p>
@@ -81,9 +80,9 @@
           <el-input-number v-model="video.sort" :min="0" controls-position="right"/>
         </el-form-item>
         <el-form-item label="是否免费">
-          <el-radio-group v-model="video.free">
-            <el-radio :label="true">免费</el-radio>
-            <el-radio :label="false">默认</el-radio>
+          <el-radio-group v-model="video.isFree">
+            <el-radio :label="1">免费</el-radio>
+            <el-radio :label="0">收费</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="上传视频">
@@ -130,7 +129,7 @@ import videoApi from '@/api/edu/video'
           chapterId: "",  //章节ID
           title: '',      //节点名称
           sort: 0,        //排序字段
-          isFree: 0,      //是否可以试听：0 收费  1免费
+          isFree: 1,      //是否可以试听： (1)免费  (0) 收费 
           videoSourceId: '' //云端视频资源
         },
 
@@ -260,20 +259,96 @@ import videoApi from '@/api/edu/video'
     
       //1、打开：小节（表单）
       openVideo(chapterId){
-        this.dialogVideoFormVisible = true    //显示小节表单
+          this.video.chapterId = chapterId      //设置：章节id
+          this.dialogVideoFormVisible = true    //显示小节表单
       },
 
       //2、保存 Or 更新 (小节)
       saveOrUpdateVideo(){
-          if(this.video.id){      //有小节ID, 为修改
-
-          }else{                  //没有小节ID, 为添加
-              
+          if(this.video.id){      
+            this.updVideoInfo()   //更新：小节信息
+          }else{                  
+            this.addVideoInfo()   //添加：小节信息
           }
       },
 
-    /*=======================================添加（小节）==========================================*/
+      //3、添加：小节信息
+      addVideoInfo(){
+        //第一步：video赋值
+        this.video.courseId = this.courseID
 
+        //第二步：将video对象传入
+        videoApi.addVideo(this.video)
+                .then(response=>{
+                    //第三步：关闭弹窗
+                    this.dialogVideoFormVisible = false
+
+                    //第四步：提示（添加小节成功）
+                    this.$message({ //提示信息
+                                    type: 'success',
+                                    message: '添加：小节成功!'
+                                });
+
+                    //第五步：刷新
+                    this.getChapterList(this.courseID)
+                })
+      },
+
+      //4、修改：小节信息
+      updVideoInfo(){
+        //第一步：修改信息
+        videoApi.updVideo(this.video)   
+                .then(response=>{
+                     //第二步：关闭弹窗
+                     this.dialogVideoFormVisible = false
+
+                    //第三步：提示（添加小节成功）
+                    this.$message({ //提示信息
+                                    type: 'success',
+                                    message: '修改：小节成功!'
+                                });
+
+                    //第四步：刷新
+                    this.getChapterList(this.courseID)
+                })  
+      },
+
+      //5、弹出：编辑小节（弹框）
+      openEditVideo(videoId){
+          //第一步：根据videoId查询出(video信息), 回显（弹框）
+          videoApi.selVideo(videoId)
+                  .then(response=>{
+                    this.video = response.data.eduVideo
+
+                    //第二步：弹出弹框
+                    this.dialogVideoFormVisible = true
+                  })
+      },
+
+      //6、删除：小节
+      removeVideo(videoId){
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {  //点击确认后
+                       //第一步：删除
+                      videoApi.delVideo(videoId)   
+                              .then(response=>{
+                                  //第二步：提示信息
+                                  this.$message({ 
+                                                  type: 'success',
+                                                  message: '删除：小节成功!'
+                                              });
+
+                                  //第三步：刷新
+                                  this.getChapterList(this.courseID)
+                              })  
+                })
+      },
+
+    /*=======================================添加（小节）==========================================*/
+      
 
   },
 };

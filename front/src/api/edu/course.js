@@ -25,4 +25,23 @@ export default {
             data:courseInfo
             })
     },
+
+
+    //4、获取所有的：课程信息
+    getListCourse(currentPage, limit, courseQuery) {
+        return request({
+                url: `/eduservice/course/getCourseList/${currentPage}/${limit}`,
+                method: 'post',
+                data:courseQuery
+            })
+    },
+
+    //4、根据课程Id：删除课程
+    delCourse(courseId) {
+        return request({
+            url: `/eduservice/course/delCourse/${courseId}`,
+            method: 'get'
+            })
+    },
+
 }
