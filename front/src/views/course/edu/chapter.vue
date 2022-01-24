@@ -48,6 +48,7 @@
             </ul>
         </li>
     </ul>
+
     <div>
         <el-button @click="previous">上一步</el-button>
         <el-button :disabled="saveBtnDisabled" type="primary" @click="next">下一步</el-button>
@@ -85,16 +86,35 @@
             <el-radio :label="0">收费</el-radio>
           </el-radio-group>
         </el-form-item>
+
         <el-form-item label="上传视频">
-          <!-- TODO -->
-        </el-form-item>
+          <el-upload
+                 :on-success="handleVodUploadSuccess"
+                 :on-remove="handleVodRemove"
+                 :before-remove="beforeVodRemove"
+                 :on-exceed="handleUploadExceed"
+                 :file-list="fileList"
+                 :action="BASE_API+'/service/vod/uploadAliyunVideo'"
+                 :limit="1"
+                 class="upload-demo">
+          <el-button size="small" type="primary">上传视频</el-button>
+          <el-tooltip placement="right-end">
+              <div slot="content">最大支持1G，<br>
+                  支持3GP、ASF、AVI、DAT、DV、FLV、F4V、<br>
+                  GIF、M2T、M4V、MJ2、MJPEG、MKV、MOV、MP4、<br>
+                  MPE、MPG、MPEG、MTS、OGG、QT、RM、RMVB、<br>
+                  SWF、TS、VOB、WMV、WEBM 等视频格式上传</div>
+              <i class="el-icon-question"/>
+          </el-tooltip>
+          </el-upload>
+      </el-form-item>
+
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogVideoFormVisible = false">取 消</el-button>
         <el-button :disabled="saveVideoBtnDisabled" type="primary" @click="saveOrUpdateVideo">确 定</el-button>
       </div>
     </el-dialog>
-
   </div>
 
   </template>
@@ -114,7 +134,10 @@ import videoApi from '@/api/edu/video'
         dialogVideoFormVisible: false,   //是否显示：小节表单
         saveBtnDisabled: false,       // （章）保存按钮是否禁用
         saveVideoBtnDisabled: false,      //(小节)保存按钮是否禁用
-
+        fileList: [],//上传文件列表
+        BASE_API: process.env.BASE_API, // 接口API地址    
+        
+        
         // 章节对象
         chapter: {    
           courseId:"", 
@@ -130,7 +153,8 @@ import videoApi from '@/api/edu/video'
           title: '',      //节点名称
           sort: 0,        //排序字段
           isFree: 1,      //是否可以试听： (1)免费  (0) 收费 
-          videoSourceId: '' //云端视频资源
+          videoSourceId: '', //云端视频资源
+          videoOriginalName: ""     //云端视频名称
         },
 
 
@@ -345,6 +369,38 @@ import videoApi from '@/api/edu/video'
                                   this.getChapterList(this.courseID)
                               })  
                 })
+      },
+
+      //7、视频上传成功
+      handleVodUploadSuccess(response, file, fileList){
+        console.log(file)
+        this.video.videoSourceId = response.data.videoSourceId
+        this.video.videoOriginalName = file.name
+      },
+
+      //8、视频上传：多个视频
+      handleUploadExceed(files, fileList){
+        this.$message.warning('想要重新上传视频，请先删除已上传的视频')
+      },
+      
+      //9、视频：移除之前
+      beforeVodRemove(file, fileList){
+        return this.$confirm(`确定移除 ${file.name}？`)
+      },
+
+      //10、视频：移除成功
+      handleVodRemove(file, fileList){
+         videoApi.delAliyunVideo(this.video.videoSourceId)
+                      .then(response=>{
+                        //刷新
+                        this.$message({
+                          type: 'success',
+                          message: response.message
+                        })
+
+                        this.video.videoSourceId = ""
+                        this.video.videoOriginalName = ""
+                      })
       },
 
     /*=======================================添加（小节）==========================================*/

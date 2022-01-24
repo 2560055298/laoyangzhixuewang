@@ -33,4 +33,12 @@ export default {
             method: 'get'
             })
     },
+
+    //5、删除：阿里云视频
+    delAliyunVideo(videoSourceId) {
+        return request({
+            url: `/service/vod/delAliyunVideo/${videoSourceId}`,
+            method: 'delete'
+            })
+    },
 }
