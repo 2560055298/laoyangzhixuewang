@@ -1,5 +1,6 @@
 package com.atguigu.eduservice.service.impl;
 
+import com.atguigu.eduservice.client.VodClient;
 import com.atguigu.eduservice.entity.EduChapter;
 import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.EduCourseDescription;
@@ -21,7 +22,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,6 +46,9 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Autowired
     private EduChapterService eduChapterService;    //章
+
+    @Autowired
+    private VodClient vodClient;                    //openfeign调用vod服务
 
     @Override
     public String saveCourseInfo(CourseInfoVo courseInfoVo) {
@@ -121,9 +128,30 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     public boolean delCourseById(String courseId) {
 
         try {
-            //1、删除：所有的小节
+            //1、删除：所有小节（和）阿里云视频
             QueryWrapper<EduVideo> videoWrapper = new QueryWrapper<>();
             videoWrapper.eq("course_id", courseId);
+            videoWrapper.select("video_source_id");
+            List<EduVideo> list = eduVideoService.list(videoWrapper);
+
+            System.out.println("我进行删除了~~~~");
+
+            List<String> videoSourceId = new ArrayList<>(); //添加：阿里云视频Id
+
+            if(list != null){
+                for(EduVideo video : list){
+                    if(!StringUtils.isEmpty(video.getVideoSourceId())){
+                        videoSourceId.add(video.getVideoSourceId());
+                    }
+                }
+            }
+
+            System.out.println("videoSourceId ==>> " + videoSourceId);
+
+            if(!StringUtils.isEmpty(videoSourceId)){
+                vodClient.delAliyunVideoByList(videoSourceId);   //删除小节：对应阿里云视频
+            }
+
             eduVideoService.remove(videoWrapper);
 
             //2、删除：所有的章

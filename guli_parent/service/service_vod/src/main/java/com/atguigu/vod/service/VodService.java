@@ -2,6 +2,8 @@ package com.atguigu.vod.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @Author HeJinYang
  * @Description
@@ -16,4 +18,7 @@ public interface VodService {
 
     //删除（小节视频）
     void delVideo(String videoSourceId);
+
+    //删除（小节视频）, 根据Ids集合
+    void delVideoByList(List<String> videoIds);
 }

@@ -2,6 +2,11 @@ package com.atguigu.vod;
 import com.aliyun.vod.upload.impl.UploadVideoImpl;
 import com.aliyun.vod.upload.req.UploadVideoRequest;
 import com.aliyun.vod.upload.resp.UploadVideoResponse;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author HeJinYang
@@ -37,5 +42,17 @@ public class LocalUpload {
 
 
         testUploadVideo(accessKeyId, accessKeySecret, title, fileName);
+    }
+
+    @Test
+    public void test(){
+        List<String> list = new ArrayList<>();
+        list.add("11");
+        list.add("22");
+        list.add("33");
+        list.add("44");
+
+        String join = StringUtils.join(list.toArray(), ",");
+        System.out.println(join);
     }
 }

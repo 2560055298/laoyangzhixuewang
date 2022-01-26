@@ -3,6 +3,7 @@ package com.atguigu.vod;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @Author HeJinYang
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  */
 
 @SpringBootApplication(scanBasePackages = {"com.atguigu"}, exclude = {DataSourceAutoConfiguration.class})
+@EnableDiscoveryClient
 public class VodApplication {
     public static void main(String[] args) {
         SpringApplication.run(VodApplication.class);

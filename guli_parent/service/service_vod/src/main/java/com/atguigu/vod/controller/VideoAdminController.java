@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @Author HeJinYang
  * @Description
@@ -36,6 +38,15 @@ public class VideoAdminController {
     public R delAliyunVideo(@PathVariable String videoSourceId){
         System.out.println("视频ID" + videoSourceId);
         vodService.delVideo(videoSourceId);
+
+        return R.ok().message("视频删除成功~~~");
+    }
+
+    //根据：小节List<String>的ID集合, 删除阿里云视频
+    @DeleteMapping("delAliyunVideo")
+    public R delAliyunVideoByList(@RequestParam("videoIds") List<String> videoIds){
+        System.out.println("视频ID集合" + videoIds);
+        vodService.delVideoByList(videoIds);
 
         return R.ok().message("视频删除成功~~~");
     }

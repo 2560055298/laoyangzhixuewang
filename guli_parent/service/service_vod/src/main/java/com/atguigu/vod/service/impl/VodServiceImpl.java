@@ -11,11 +11,13 @@ import com.aliyuncs.vod.model.v20170321.DeleteVideoResponse;
 import com.atguigu.servicebase.exceptionhandler.GuiguException;
 import com.atguigu.vod.service.VodService;
 import com.atguigu.vod.utils.ConstantPropertiesVodUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @Author HeJinYang
@@ -85,6 +87,27 @@ public class VodServiceImpl implements VodService {
             DeleteVideoRequest request = new DeleteVideoRequest();
             //支持传入多个视频ID，多个用逗号分隔
             request.setVideoIds(videoSourceId);
+            response = client.getAcsResponse(request);
+        } catch (Exception e) {
+            System.out.print("ErrorMessage = " + e.getLocalizedMessage());
+        }
+        System.out.print("RequestId = " + response.getRequestId() + "\n");
+    }
+
+
+    //删除（小节视频）, 根据Ids集合
+    @Override
+    public void delVideoByList(List<String> videoIds) {
+        String accessKeyId = ConstantPropertiesVodUtils.KEY_ID;
+        String accessKeySecret = ConstantPropertiesVodUtils.KEY_SECRET;
+
+        DefaultAcsClient client = initVodClient(accessKeyId, accessKeySecret);
+        DeleteVideoResponse response = new DeleteVideoResponse();
+        try {
+            DeleteVideoRequest request = new DeleteVideoRequest();
+            //支持传入多个视频ID，多个用逗号分隔
+            String ids = StringUtils.join(videoIds.toArray(), ",");
+            request.setVideoIds(ids);
             response = client.getAcsResponse(request);
         } catch (Exception e) {
             System.out.print("ErrorMessage = " + e.getLocalizedMessage());

@@ -74,7 +74,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.VodApplication">
+  <component name="RunManager" selected="Spring Boot.EduTeacherApplication">
     <configuration name="LocalUpload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.atguigu.vod.LocalUpload" />
       <module name="service_vod" />
@@ -99,7 +99,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LocalUpload.testUploadVideo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LocalUpload.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="service_vod" />
       <extension name="coverage">
         <pattern>
@@ -109,7 +109,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.atguigu.vod" />
       <option name="MAIN_CLASS_NAME" value="com.atguigu.vod.LocalUpload" />
-      <option name="METHOD_NAME" value="testUploadVideo" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.VodApplication" />
-        <item itemvalue="Spring Boot.OssApplication" />
         <item itemvalue="Spring Boot.EduTeacherApplication" />
+        <item itemvalue="Spring Boot.OssApplication" />
+        <item itemvalue="Spring Boot.VodApplication" />
+        <item itemvalue="JUnit.LocalUpload.test" />
         <item itemvalue="Application.LocalUpload" />
-        <item itemvalue="JUnit.LocalUpload.testUploadVideo" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +207,7 @@
       <workItem from="1641970088425" duration="56810000" />
       <workItem from="1642290154120" duration="43347000" />
       <workItem from="1642550181092" duration="44149000" />
-      <workItem from="1642983136860" duration="16981000" />
+      <workItem from="1642983136860" duration="38498000" />
     </task>
     <servers />
   </component>

@@ -138,7 +138,7 @@ import videoApi from '@/api/edu/video'
         BASE_API: process.env.BASE_API, // 接口API地址    
         
         
-        // 章节对象
+        //章节对象
         chapter: {    
           courseId:"", 
           title: '',
@@ -156,7 +156,6 @@ import videoApi from '@/api/edu/video'
           videoSourceId: '', //云端视频资源
           videoOriginalName: ""     //云端视频名称
         },
-
 
       };
     },
@@ -301,6 +300,8 @@ import videoApi from '@/api/edu/video'
         //第一步：video赋值
         this.video.courseId = this.courseID
 
+        console.log("添加小节的信息：" + this.video.videoSourceId)
+
         //第二步：将video对象传入
         videoApi.addVideo(this.video)
                 .then(response=>{
@@ -312,6 +313,9 @@ import videoApi from '@/api/edu/video'
                                     type: 'success',
                                     message: '添加：小节成功!'
                                 });
+
+                    this.video = {}           //表单置位空  
+                    this.fileList = []     //上传文件列表
 
                     //第五步：刷新
                     this.getChapterList(this.courseID)
@@ -373,7 +377,6 @@ import videoApi from '@/api/edu/video'
 
       //7、视频上传成功
       handleVodUploadSuccess(response, file, fileList){
-        console.log(file)
         this.video.videoSourceId = response.data.videoSourceId
         this.video.videoOriginalName = file.name
       },
