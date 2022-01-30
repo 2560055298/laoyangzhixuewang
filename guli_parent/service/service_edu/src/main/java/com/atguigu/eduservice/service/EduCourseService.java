@@ -7,6 +7,8 @@ import com.atguigu.eduservice.entity.vo.CourseQuery;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程 服务类
@@ -30,4 +32,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     //分页查询：所有课程信息
     IPage<EduCourse> pageCourse(Integer page, Integer limit, CourseQuery courseQuery);
+
+    //(顾客端) 降序排列：查询8门课程
+    List<EduCourse> selectListLimitEight();
 }

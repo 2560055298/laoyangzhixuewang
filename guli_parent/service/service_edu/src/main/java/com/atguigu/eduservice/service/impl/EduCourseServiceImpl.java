@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -191,6 +192,16 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         }
 
         return baseMapper.selectPage(pageInfo, queryWrapper);
+    }
+
+    //(顾客端) 降序排列：查询8门课程
+    @Cacheable(key = "'client'", value = "selectListLimitEight")
+    @Override
+    public List<EduCourse> selectListLimitEight() {
+        QueryWrapper<EduCourse> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("view_count");     //按浏览量：降序排列
+        queryWrapper.last("limit 8");
+        return baseMapper.selectList(queryWrapper);
     }
 
 }

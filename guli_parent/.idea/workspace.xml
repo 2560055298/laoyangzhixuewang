@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -47,7 +47,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/service/service_vod" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service/service_msm/src/main/java/com/atguigu/msmservice/utils" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -59,12 +59,19 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\service\service_msm\src\main\java\com\atguigu\msmservice\utils" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\service" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\common" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.atguigu" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.atguigu.cmsservice.controller" />
+      <recent name="com.test" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -74,20 +81,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EduTeacherApplication">
-    <configuration name="LocalUpload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.atguigu.vod.LocalUpload" />
-      <module name="service_vod" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.atguigu.vod.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.MsmApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -99,18 +93,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LocalUpload.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="service_vod" />
+    <configuration name="getCode.main1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="service_cms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.atguigu.vod.*" />
+          <option name="PATTERN" value="com.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.atguigu.vod" />
-      <option name="MAIN_CLASS_NAME" value="com.atguigu.vod.LocalUpload" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="PACKAGE_NAME" value="com.test" />
+      <option name="MAIN_CLASS_NAME" value="com.test.getCode" />
+      <option name="METHOD_NAME" value="main1" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CrmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service_cms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.cmsservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.cmsservice.CrmApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,6 +142,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MsmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service_msm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.msmservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.msmservice.MsmApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OssApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="service_oss" />
       <extension name="coverage">
@@ -148,26 +168,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VodApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="service_vod" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.atguigu.vod.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.vod.VodApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.MsmApplication" />
         <item itemvalue="Spring Boot.EduTeacherApplication" />
+        <item itemvalue="Spring Boot.CrmApplication" />
+        <item itemvalue="JUnit.getCode.main1" />
         <item itemvalue="Spring Boot.OssApplication" />
-        <item itemvalue="Spring Boot.VodApplication" />
-        <item itemvalue="JUnit.LocalUpload.test" />
-        <item itemvalue="Application.LocalUpload" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +214,7 @@
       <workItem from="1641970088425" duration="56810000" />
       <workItem from="1642290154120" duration="43347000" />
       <workItem from="1642550181092" duration="44149000" />
-      <workItem from="1642983136860" duration="38498000" />
+      <workItem from="1642983136860" duration="76995000" />
     </task>
     <servers />
   </component>
