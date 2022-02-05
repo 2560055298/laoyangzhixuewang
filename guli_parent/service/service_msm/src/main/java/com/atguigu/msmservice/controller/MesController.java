@@ -3,6 +3,7 @@ package com.atguigu.msmservice.controller;
 import com.atguigu.commonutils.R;
 import com.atguigu.msmservice.service.MesService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ public class MesController {
     private MesService mesService;
 
     //通过腾讯云：发送注册短信
+    @ApiOperation("通过腾讯云：发送注册短信")
     @GetMapping("sendMessage/{phone}")
     public R sendMessage(@PathVariable String phone){
         boolean sendResult = mesService.sendMessageByTencent(phone);

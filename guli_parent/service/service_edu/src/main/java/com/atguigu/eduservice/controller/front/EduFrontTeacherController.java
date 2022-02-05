@@ -1,14 +1,14 @@
 package com.atguigu.eduservice.controller.front;
 
 import com.atguigu.commonutils.R;
+import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.EduTeacher;
+import com.atguigu.eduservice.service.EduCourseService;
 import com.atguigu.eduservice.service.EduTeacherService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,11 +27,30 @@ public class EduFrontTeacherController {
     @Autowired
     private EduTeacherService eduTeacherService;
 
+    @Autowired
+    private EduCourseService eduCourseService;
+
     //1、降序排列：查询4位讲师
     @GetMapping("getListTeacher")
     public R getListTeacher(){
         List<EduTeacher> list = eduTeacherService.selectListLimitFour();
 
         return R.ok().data("items", list);
+    }
+
+    //2、分页查询：名师信息（每页8条）
+    @GetMapping("getPageTeacher/{currentPage}/{limit}")
+    public R getPageTeacher(@PathVariable Long currentPage, @PathVariable Long limit){
+        Page<EduTeacher> page = new Page<>(currentPage, limit);
+        return R.ok().data("data", eduTeacherService.selectPageTeacherMap(page));
+    }
+
+    //3、根据id：查询讲师信息
+    @GetMapping("selTeacherById/{teacherId}")
+    public R selTeacherById(@PathVariable String teacherId){
+        EduTeacher teacher = eduTeacherService.getById(teacherId);
+        List<EduCourse> courses =  eduCourseService.selCourseByTeacherId(teacherId);
+
+        return R.ok().data("teacher", teacher).data("courses", courses).data("length", courses.size());
     }
 }

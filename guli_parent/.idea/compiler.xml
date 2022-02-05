@@ -13,6 +13,7 @@
         <module name="service_edu" />
         <module name="service_msm" />
         <module name="service_cms" />
+        <module name="service_ucenter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,11 +22,13 @@
       <module name="guli_parent" target="1.8" />
       <module name="service" target="1.8" />
       <module name="service-base" target="1.8" />
+      <module name="service-ucenter" target="1.8" />
       <module name="service_base" target="1.8" />
       <module name="service_cms" target="1.8" />
       <module name="service_edu" target="1.8" />
       <module name="service_msm" target="1.8" />
       <module name="service_oss" target="1.8" />
+      <module name="service_ucenter" target="1.8" />
       <module name="service_vod" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -36,11 +39,13 @@
       <module name="guli_parent" options="-parameters" />
       <module name="service" options="" />
       <module name="service-base" options="-parameters" />
+      <module name="service-ucenter" options="-parameters" />
       <module name="service_base" options="-parameters" />
       <module name="service_cms" options="-parameters" />
       <module name="service_edu" options="-parameters" />
       <module name="service_msm" options="-parameters" />
       <module name="service_oss" options="-parameters" />
+      <module name="service_ucenter" options="-parameters" />
       <module name="service_vod" options="-parameters" />
     </option>
   </component>

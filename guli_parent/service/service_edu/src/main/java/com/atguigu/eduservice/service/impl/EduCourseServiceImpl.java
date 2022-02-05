@@ -5,10 +5,7 @@ import com.atguigu.eduservice.entity.EduChapter;
 import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.EduCourseDescription;
 import com.atguigu.eduservice.entity.EduVideo;
-import com.atguigu.eduservice.entity.vo.ChapterVo;
-import com.atguigu.eduservice.entity.vo.CourseInfoVo;
-import com.atguigu.eduservice.entity.vo.CoursePublishVo;
-import com.atguigu.eduservice.entity.vo.CourseQuery;
+import com.atguigu.eduservice.entity.vo.*;
 import com.atguigu.eduservice.mapper.EduCourseMapper;
 import com.atguigu.eduservice.service.EduChapterService;
 import com.atguigu.eduservice.service.EduCourseDescriptionService;
@@ -26,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -204,4 +202,63 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         return baseMapper.selectList(queryWrapper);
     }
 
+    @Override
+    public List<EduCourse> selCourseByTeacherId(String teacherId) {
+        QueryWrapper<EduCourse> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("teacher_id", teacherId);
+        return baseMapper.selectList(queryWrapper);
+    }
+
+    //根据FrontCourseVo （分页查询）课程信息
+    @Override
+    public HashMap<String, Object> selPageCourseByFrontCourseVo(Page<EduCourse> page, FrontCourseVo frontCourseVo) {
+        //声明：查询QueryWrapper
+        QueryWrapper<EduCourse> queryWrapper = new QueryWrapper<>();
+
+        //设置查询条件
+        if(!StringUtils.isEmpty(frontCourseVo)){
+            String subjectParentId = frontCourseVo.getSubjectParentId();        //一级课程分类ID
+            String subjectId = frontCourseVo.getSubjectId();                    //二级课程分类ID
+            String buyCountSort = frontCourseVo.getBuyCountSort();              //关注度
+            String gmtCreateSort = frontCourseVo.getGmtCreateSort();            //最新时间
+            String priceSort = frontCourseVo.getPriceSort();                    //价格
+
+            if(!StringUtils.isEmpty(subjectParentId)){  //当：一级分类（不为空）
+                queryWrapper.like("subject_parent_id", subjectParentId);
+            }
+
+            if(!StringUtils.isEmpty(subjectId)){  //当：二级分类（不为空）
+                queryWrapper.like("subject_id", subjectId);
+            }
+
+            if(!StringUtils.isEmpty(buyCountSort)){  //当：关注度（不为空）
+                queryWrapper.orderByDesc("buy_count");
+            }
+
+            if(!StringUtils.isEmpty(gmtCreateSort)){  //当：最新时间（不为空）
+                queryWrapper.orderByDesc("gmt_create");
+            }
+
+            if(!StringUtils.isEmpty(priceSort)){   //当：价格（不为空）
+                queryWrapper.orderByDesc("price");
+            }
+        }
+
+        baseMapper.selectMapsPage(page, queryWrapper);
+
+        //构建：返回信息（课程map）
+        HashMap<String, Object> courseMapInfo = new HashMap<>();
+
+        System.out.println("总条数：" + page.getTotal());
+        System.out.println("总页数：" + page.getPages());
+
+        courseMapInfo.put("current", page.getCurrent());
+        courseMapInfo.put("pages", page.getPages());
+        courseMapInfo.put("total", page.getTotal());
+        courseMapInfo.put("records", page.getRecords());
+        courseMapInfo.put("hasPrevious", page.hasPrevious());
+        courseMapInfo.put("hasNext", page.hasNext());
+
+        return courseMapInfo;
+    }
 }

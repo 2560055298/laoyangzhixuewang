@@ -2,14 +2,14 @@ package com.atguigu.eduservice.controller.front;
 
 import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduCourse;
+import com.atguigu.eduservice.entity.vo.FrontCourseVo;
 import com.atguigu.eduservice.service.EduCourseService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,5 +32,17 @@ public class EduFrontCourseController {
     public R getListCourse(){
         List<EduCourse> list = eduCourseService.selectListLimitEight();
         return R.ok().data("items", list);
+    }
+
+    //2、根据FrontCourseVo （分页查询）课程信息
+    @PostMapping("getPageCourse/{currentPage}/{limit}")
+    public R getPageCourse(@PathVariable("currentPage") Long currentPage,
+                           @PathVariable("limit") Long limit,
+                           @RequestBody(required = false) FrontCourseVo frontCourseVo){
+
+        Page<EduCourse> page = new Page<>(currentPage, limit);
+        HashMap<String, Object> map = eduCourseService.selPageCourseByFrontCourseVo(page, frontCourseVo);
+
+        return R.ok().data("courseMap", map);
     }
 }

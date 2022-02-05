@@ -47,19 +47,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/service/service_msm/src/main/java/com/atguigu/msmservice/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service/service_ucenter/src/main/java/com/atguigu/ucenterservice/utils" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26260257" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.ignored.files" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\service\service_ucenter\src\main\java\com\atguigu\ucenterservice\utils" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\guli_parent\service\service_msm\src\main\java\com\atguigu\msmservice\utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -70,6 +71,8 @@
       <recent name="com.atguigu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.atguigu" />
+      <recent name="com.atguigu.test" />
       <recent name="com.atguigu.cmsservice.controller" />
       <recent name="com.test" />
     </key>
@@ -81,30 +84,16 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MsmApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.EduTeacherApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="getCode.main1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="service_cms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.test" />
-      <option name="MAIN_CLASS_NAME" value="com.test.getCode" />
-      <option name="METHOD_NAME" value="main1" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,13 +157,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VodApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="service_vod" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.vod.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.vod.VodApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MsmApplication" />
         <item itemvalue="Spring Boot.EduTeacherApplication" />
-        <item itemvalue="Spring Boot.CrmApplication" />
-        <item itemvalue="JUnit.getCode.main1" />
         <item itemvalue="Spring Boot.OssApplication" />
+        <item itemvalue="Spring Boot.VodApplication" />
+        <item itemvalue="Spring Boot.MsmApplication" />
+        <item itemvalue="Spring Boot.CrmApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +216,10 @@
       <workItem from="1641970088425" duration="56810000" />
       <workItem from="1642290154120" duration="43347000" />
       <workItem from="1642550181092" duration="44149000" />
-      <workItem from="1642983136860" duration="76995000" />
+      <workItem from="1642983136860" duration="107475000" />
+      <workItem from="1643848955680" duration="13722000" />
+      <workItem from="1643936050544" duration="9933000" />
+      <workItem from="1644048385024" duration="14295000" />
     </task>
     <servers />
   </component>
