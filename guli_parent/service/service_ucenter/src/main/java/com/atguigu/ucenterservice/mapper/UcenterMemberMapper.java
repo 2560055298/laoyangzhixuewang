@@ -1,7 +1,8 @@
 package com.atguigu.ucenterservice.mapper;
 
-import com.atguigu.ucenterservice.entity.UcenterMember;
+import com.atguigu.servicebase.vo.UcenterMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author laoyang
  * @since 2022-01-31
  */
-public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
 
+
+public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
+    //1、根据创建时间：获取注册的人数
+    Integer selectCountByCreateTime(String gmtCreate);
 }

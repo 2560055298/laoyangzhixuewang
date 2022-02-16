@@ -22,7 +22,6 @@ import java.util.List;
 @Api(description = "分类管理(顾客)")
 @RestController
 @RequestMapping("/eduservice/client/subject")
-@CrossOrigin
 public class EduFrontSubjectController {
     @Autowired
     private EduSubjectService subjectService;

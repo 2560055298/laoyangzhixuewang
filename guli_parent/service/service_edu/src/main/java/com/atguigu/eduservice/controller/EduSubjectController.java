@@ -1,21 +1,13 @@
 package com.atguigu.eduservice.controller;
 
-
-import com.alibaba.excel.EasyExcel;
 import com.atguigu.commonutils.R;
-import com.atguigu.eduservice.entity.excel.SubjectData;
 import com.atguigu.eduservice.entity.subject.OneSubject;
-import com.atguigu.eduservice.listener.SubjectExcelListener;
 import com.atguigu.eduservice.service.EduSubjectService;
-import com.atguigu.eduservice.service.EduTeacherService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -29,7 +21,6 @@ import java.util.List;
 @RestController
 @Api(description = "课程分类管理")
 @RequestMapping("/eduservice/subject")
-@CrossOrigin
 public class EduSubjectController {
     @Autowired
     private EduSubjectService eduSubjectService;

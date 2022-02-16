@@ -16,6 +16,14 @@ export default {
       url: `/eduservice/client/subject/getSubjectList`,
       method: 'get'
     })
+  },
+
+  // 3、根据课程ID：查询课程
+  getCourse(courseId) {
+    return request({
+      url: `/eduservice/client/course/getCourse/${courseId}`,
+      method: 'get'
+    })
   }
 
 }

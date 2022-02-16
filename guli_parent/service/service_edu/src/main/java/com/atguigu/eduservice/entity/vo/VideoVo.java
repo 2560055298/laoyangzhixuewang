@@ -13,4 +13,5 @@ import lombok.Data;
 public class VideoVo {
     private String id;
     private String title;
+    private String videoSourceId;       //阿里云：视频ID
 }

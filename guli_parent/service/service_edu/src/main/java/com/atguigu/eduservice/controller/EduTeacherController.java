@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(description = "讲师管理")
 @RestController
-@CrossOrigin
 @RequestMapping("/eduservice/teacher")
 @Slf4j
 public class EduTeacherController {

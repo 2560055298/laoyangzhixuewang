@@ -2,7 +2,7 @@ package com.atguigu.ucenterservice.service.impl;
 
 import com.atguigu.commonutils.JwtUtils;
 import com.atguigu.servicebase.exceptionhandler.GuiguException;
-import com.atguigu.ucenterservice.entity.UcenterMember;
+import com.atguigu.servicebase.vo.UcenterMember;
 import com.atguigu.ucenterservice.entity.vo.LoginVo;
 import com.atguigu.ucenterservice.entity.vo.RegisterVo;
 import com.atguigu.ucenterservice.mapper.UcenterMemberMapper;
@@ -197,5 +197,12 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         }
 
         return JwtUtils.getJwtToken(ucenterMember.getId(), ucenterMember.getNickname());
+    }
+
+
+    //6、根据创建时间：获取注册的人数
+    @Override
+    public Integer getNumberByCreateTime(String gmtCreate) {
+        return baseMapper.selectCountByCreateTime(gmtCreate);
     }
 }

@@ -2,6 +2,10 @@ package com.atguigu.vod;
 import com.aliyun.vod.upload.impl.UploadVideoImpl;
 import com.aliyun.vod.upload.req.UploadVideoRequest;
 import com.aliyun.vod.upload.resp.UploadVideoResponse;
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.profile.DefaultProfile;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -54,5 +58,32 @@ public class LocalUpload {
 
         String join = StringUtils.join(list.toArray(), ",");
         System.out.println(join);
+    }
+
+    public static GetVideoPlayAuthResponse getVideoPlayAuth(DefaultAcsClient client) throws Exception {
+        GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+        request.setVideoId("6ca0d5a5e6534b6bb0458aea696f2d11");
+        return client.getAcsResponse(request);
+    }
+
+    /*以下为调用示例*/
+    @Test
+    public void getVideoPlayAuth11() {
+        String regionId = "cn-shanghai";  // 点播服务接入地域
+        DefaultProfile profile = DefaultProfile.getProfile(regionId, ConstantAliInfo.ACCESS_KEY_ID, ConstantAliInfo.ACCESS_KEY_SECRET);
+        DefaultAcsClient client = new DefaultAcsClient(profile);
+        GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
+
+
+        try {
+            response = getVideoPlayAuth(client);
+            //播放凭证
+            System.out.print("PlayAuth = " + response.getPlayAuth() + "\n");
+            //VideoMeta信息
+            System.out.print("VideoMeta.Title = " + response.getVideoMeta().getTitle() + "\n");
+        } catch (Exception e) {
+            System.out.print("ErrorMessage = " + e.getLocalizedMessage());
+        }
+        System.out.print("RequestId = " + response.getRequestId() + "\n");
     }
 }

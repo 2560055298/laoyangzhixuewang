@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @Api(description = "腾讯云发送短信")
 @RestController
 @RequestMapping("/msm/send")
-@CrossOrigin
 public class MesController {
     @Autowired
     private MesService mesService;

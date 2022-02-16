@@ -1,10 +1,8 @@
 package com.atguigu.eduservice.service;
 
 import com.atguigu.eduservice.entity.EduCourse;
-import com.atguigu.eduservice.entity.vo.CourseInfoVo;
-import com.atguigu.eduservice.entity.vo.CoursePublishVo;
-import com.atguigu.eduservice.entity.vo.CourseQuery;
-import com.atguigu.eduservice.entity.vo.FrontCourseVo;
+import com.atguigu.eduservice.entity.vo.*;
+import com.atguigu.servicebase.vo.WebCourseVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -44,4 +42,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     //根据FrontCourseVo （分页查询）课程信息
     HashMap<String, Object> selPageCourseByFrontCourseVo(Page<EduCourse> page, FrontCourseVo frontCourseVo);
+
+    //根据：课程ID查询课程信息
+    WebCourseVo getCourseInfoByCourseId(String courseId);
 }

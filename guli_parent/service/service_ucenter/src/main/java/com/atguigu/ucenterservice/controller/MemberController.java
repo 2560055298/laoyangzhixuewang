@@ -3,7 +3,7 @@ package com.atguigu.ucenterservice.controller;
 
 import com.atguigu.commonutils.JwtUtils;
 import com.atguigu.commonutils.R;
-import com.atguigu.ucenterservice.entity.UcenterMember;
+import com.atguigu.servicebase.vo.UcenterMember;
 import com.atguigu.ucenterservice.entity.vo.LoginVo;
 import com.atguigu.ucenterservice.entity.vo.RegisterVo;
 import com.atguigu.ucenterservice.service.UcenterMemberService;
@@ -22,11 +22,9 @@ import javax.servlet.http.HttpServletRequest;
  * @author laoyang
  * @since 2022-01-31
  */
-
 @Api("用户管理(顾客端)")
 @RestController
 @RequestMapping("api/ucenter/member")
-@CrossOrigin
 public class MemberController {
     @Autowired
     private UcenterMemberService ucenterMemberService;
@@ -54,6 +52,19 @@ public class MemberController {
         String memberId = JwtUtils.getMemberIdByJwtToken(request);
         UcenterMember member = ucenterMemberService.getById(memberId);
         return R.ok().data("memberInfo", member);
+    }
+
+    //4、根据用户ID：查询用户信息
+    @ApiOperation("根据用户ID：查询用户信息")
+    @GetMapping("getMemberById/{id}")
+    public UcenterMember getMemberById(@PathVariable("id") String id){
+        return ucenterMemberService.getById(id);
+    }
+
+    //5、根据创建时间：获取注册的人数
+    @GetMapping("getCount/{gmtCreate}")
+    public Integer getCount(@PathVariable(value = "gmtCreate") String gmtCreate){
+        return ucenterMemberService.getNumberByCreateTime(gmtCreate);
     }
 }
 

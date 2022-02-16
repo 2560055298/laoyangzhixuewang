@@ -12,6 +12,9 @@
         <module>service/service_vod</module>
         <module>service/service_msm</module>
         <module>service/service_ucenter</module>
+        <module>service/service_order</module>
+        <module>service/service_statistics</module>
+        <module>infrastructure</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

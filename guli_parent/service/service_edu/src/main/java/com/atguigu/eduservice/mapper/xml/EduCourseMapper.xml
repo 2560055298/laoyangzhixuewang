@@ -12,4 +12,19 @@
         ON course.subject_parent_id = subject2.id
         WHERE course.id = #{courseId}
     </select>
+
+    <select id="selCourseInfoByCourseId" resultType="com.atguigu.servicebase.vo.WebCourseVo">
+        SELECT
+            course.id `id`,course.title,course.price,course.lesson_num `lessonNum`,course.cover, course.buy_count `buyCount`, course.view_count `viewCount`, des.description  ,teacher.id `teacherId`,teacher.name `teacherName`, teacher.intro, teacher.avatar,subject1.id `subjectLevelOneId`, subject1.title `subjectLevelOne`,subject2.id `subjectLevelTwoId`, subject2.title `subjectLevelTwo` FROM guli.edu_course `course`
+            LEFT JOIN guli.edu_course_description `des`
+            ON course.id = des.id
+            LEFT JOIN guli.edu_teacher `teacher`
+            ON course.teacher_id = teacher.id
+            LEFT JOIN guli.edu_subject `subject1`
+            ON course.subject_id = subject1.id
+            LEFT JOIN guli.edu_subject `subject2`
+            ON course.subject_parent_id = subject2.id
+            WHERE course.id = #{courseId}
+    </select>
+
 </mapper>

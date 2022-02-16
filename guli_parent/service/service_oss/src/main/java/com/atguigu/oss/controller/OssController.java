@@ -19,7 +19,6 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/eduoss/fileoss")
-@CrossOrigin
 public class OssController {
     @Resource
     private OssService ossService;      //按名称注入

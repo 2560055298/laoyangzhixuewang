@@ -12,6 +12,7 @@ import com.atguigu.eduservice.service.EduCourseDescriptionService;
 import com.atguigu.eduservice.service.EduCourseService;
 import com.atguigu.eduservice.service.EduVideoService;
 import com.atguigu.servicebase.exceptionhandler.GuiguException;
+import com.atguigu.servicebase.vo.WebCourseVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -21,11 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -260,5 +259,11 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         courseMapInfo.put("hasNext", page.hasNext());
 
         return courseMapInfo;
+    }
+
+    //根据：课程ID查询课程信息
+    @Override
+    public WebCourseVo getCourseInfoByCourseId(String courseId) {
+        return baseMapper.selCourseInfoByCourseId(courseId);
     }
 }

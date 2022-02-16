@@ -1,6 +1,6 @@
 package com.atguigu.ucenterservice.service;
 
-import com.atguigu.ucenterservice.entity.UcenterMember;
+import com.atguigu.servicebase.vo.UcenterMember;
 import com.atguigu.ucenterservice.entity.vo.LoginVo;
 import com.atguigu.ucenterservice.entity.vo.RegisterVo;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -29,4 +29,7 @@ public interface UcenterMemberService extends IService<UcenterMember> {
 
     //5、通过：openid、access_token 获取（微信用户信息） 并 （保存), 返回token用户token信息
     String saveWechatInfo(String openid, String access_token);
+
+    //6、根据创建时间：获取注册的人数
+    Integer getNumberByCreateTime(String gmtCreate);
 }

@@ -50,17 +50,17 @@
             <ol class="js-tap clearfix">
               <li :class="{'current bg-orange':frontCourseVo.buyCountSort!=''}">
                 <a title="销量" href="javascript:void(0);" @click="searchBuyCount()">销量
-                  <span :class="{hide:buyCountSort==''}">↓</span>
+                  <span :class="{hide:frontCourseVo.buyCountSort==''}">↓</span>
                 </a>
               </li>
               <li :class="{'current bg-orange':frontCourseVo.gmtCreateSort!=''}">
                 <a title="最新" href="javascript:void(0);" @click="searchGmtCreate()">最新
-                  <span :class="{hide:gmtCreateSort==''}">↓</span>
+                  <span :class="{hide:frontCourseVo.gmtCreateSort==''}">↓</span>
                 </a>
               </li>
               <li :class="{'current bg-orange':frontCourseVo.priceSort!=''}">
                 <a title="价格" href="javascript:void(0);" @click="searchPrice()">价格&nbsp;
-                  <span :class="{hide:priceSort==''}">↓</span>
+                  <span :class="{hide:frontCourseVo.priceSort==''}">↓</span>
                 </a>
               </li>
             </ol>

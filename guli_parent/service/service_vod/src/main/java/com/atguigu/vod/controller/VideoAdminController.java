@@ -1,7 +1,12 @@
 package com.atguigu.vod.controller;
 
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.atguigu.commonutils.R;
 import com.atguigu.vod.service.VodService;
+import com.atguigu.vod.utils.AliyunVodSDKUtils;
+import com.atguigu.vod.utils.ConstantPropertiesVodUtils;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +24,6 @@ import java.util.List;
 @Api(description = "小节视频管理")
 @RestController
 @RequestMapping("service/vod")
-@CrossOrigin
 public class VideoAdminController {
     @Autowired
     private VodService vodService;
@@ -49,5 +53,29 @@ public class VideoAdminController {
         vodService.delVideoByList(videoIds);
 
         return R.ok().message("视频删除成功~~~");
+    }
+
+    @GetMapping("getVideoPlayAuth/{videoSourceId}")
+    public R getVideoPlayAuth(@PathVariable("videoSourceId") String videoSourceId) throws Exception {
+
+        //获取阿里云存储相关常量
+        String accessKeyId = ConstantPropertiesVodUtils.KEY_ID;
+        String accessKeySecret = ConstantPropertiesVodUtils.KEY_SECRET;
+
+        //初始化
+        DefaultAcsClient client = AliyunVodSDKUtils.initVodClient(accessKeyId, accessKeySecret);
+
+        //请求
+        GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+        request.setVideoId(videoSourceId);
+
+        //响应
+        GetVideoPlayAuthResponse response = client.getAcsResponse(request);
+
+        //得到播放凭证
+        String playAuth = response.getPlayAuth();
+
+        //返回结果
+        return R.ok().message("获取凭证成功").data("playAuth", playAuth);
     }
 }

@@ -49,7 +49,7 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
             List<VideoVo>  children = new ArrayList<>();
             BeanUtils.copyProperties(eduChapter, chapterVo);    //拷贝到：Vo中
 
-            //设置节
+            //设置节videoSourceId
             for(EduVideo eduVideo : videosList){
                 if(eduVideo.getChapterId().equals(chapterVo.getId())){  //节：对应章
                     VideoVo videoVo = new VideoVo();
