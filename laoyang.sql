@@ -288,7 +288,7 @@ CREATE TABLE `edu_user` (
 
 LOCK TABLES `edu_user` WRITE;
 /*!40000 ALTER TABLE `edu_user` DISABLE KEYS */;
-INSERT INTO `edu_user` VALUES ('1111','laoyang','hejinyang71','老洋','https://laoyangzhixuewang01.oss-cn-beijing.aliyuncs.com/2022/02/20/d610bde53d8dbd7e761a310ed38e2ace_1.jpg',0,'2019-11-01 10:39:47','2019-11-01 10:39:47'),('1112','test','123456','test','https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',0,'2019-11-01 16:36:07','2019-11-01 16:40:08');
+INSERT INTO `edu_user` VALUES ('1111','admin','123456','老洋','https://laoyangzhixuewang01.oss-cn-beijing.aliyuncs.com/2022/02/20/d610bde53d8dbd7e761a310ed38e2ace_1.jpg',0,'2019-11-01 10:39:47','2019-11-01 10:39:47'),('1112','test','123456','test','https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',0,'2019-11-01 16:36:07','2019-11-01 16:40:08');
 /*!40000 ALTER TABLE `edu_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
