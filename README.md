@@ -4,10 +4,11 @@
 <h1 align="center" style="color:#99d9ea">老洋自学网</h1>
 <p>
   <a href="https://www.yangzaikongzhongfei.com/"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E8%87%AA%E5%AD%A6%E7%BD%91-%E4%B8%AA%E4%BA%BA%E7%AB%99%E7%82%B9-brightgreen" alt="网站地址"></a>&nbsp;
-  <a href="https://www.bilibili.com/video/BV1Yv411E7Gf"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E8%87%AA%E5%AD%A6%E7%BD%91-%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA-brightgreen" alt="项目展示"></a>&nbsp;
+  <a href="https://www.bilibili.com/video/BV1m44y1T7v7?spm_id_from=333.999.0.0"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E8%87%AA%E5%AD%A6%E7%BD%91-%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA-brightgreen" alt="项目展示"></a>&nbsp;
     <a href="https://github.com/2560055298/laoyangzhixuewang"><img src="https://img.shields.io/badge/gitHub-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-red" alt="gitHub"></a>&nbsp;
   <a href="https://gitee.com/sheep-are-flying-in-the-sky/laoyangzhixuewang"><img src="https://img.shields.io/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange" alt="码云"></a>
 </p>
+
 
 
 
