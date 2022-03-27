@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="130" src="https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/111.jpg">
+    <img width="130" src="https://cdn.laoyangzhijia.com/my-picture-master/picture9/111.jpg">
 </p>
 <h1 align="center" style="color:#99d9ea">老洋自学网</h1>
 <p>
@@ -8,6 +8,7 @@
     <a href="https://github.com/2560055298/laoyangzhixuewang"><img src="https://img.shields.io/badge/gitHub-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-red" alt="gitHub"></a>&nbsp;
   <a href="https://gitee.com/sheep-are-flying-in-the-sky/laoyangzhixuewang"><img src="https://img.shields.io/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange" alt="码云"></a>
 </p>
+
 
 
 
