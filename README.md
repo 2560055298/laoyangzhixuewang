@@ -47,7 +47,7 @@
 
 > 前台：网站系统
 
-![image-20220228074507250](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/pic15/image-20220228074507250.png)
+![image-20220228074507250](https://cdn.laoyangzhijia.com/my-picture-master/pic15/image-20220228074507250.png)
 
 
 
@@ -55,7 +55,7 @@
 
 > 后台：运营平台
 
-![image-20220228074602167](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/pic15/image-20220228074602167.png)
+![image-20220228074602167](https://cdn.laoyangzhijia.com/my-picture-master/pic15/image-20220228074602167.png)
 
 
 
@@ -116,7 +116,7 @@ laoyangzixuewang
 
 ##### 业务架构图
 
-![image-20220228083106675](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/pic15/image-20220228083106675.png)
+![image-20220228083106675](https://cdn.laoyangzhijia.com/my-picture-master/pic15/image-20220228083106675.png)
 
 
 
